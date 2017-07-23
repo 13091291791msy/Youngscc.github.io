@@ -1,55 +1,30 @@
-# end2end Clean Jekyll theme [![Build Status](https://travis-ci.org/nandomoreirame/end2end.svg?branch=master)](https://travis-ci.org/nandomoreirame/end2end)
+Agency Jekyll theme
+====================
 
-* [x] Clean layout
-* [x] Resposive layout
-* [x] Preprocessor SASS
-* [x] CSS minified
-* [x] Pagination
-* [x] Syntax highlight
-* [x] Author config
-* [x] Comments with Disqus
-* [ ] Search posts
-* [ ] Share posts
+Agency theme based on [Agency bootstrap theme ](https://startbootstrap.com/template-overviews/agency/)
 
----
+# How to use
 
-### Start in 4 steps
+###Portfolio 
 
-1. Download or clone repo `git clone git@github.com:nandomoreirame/end2end.git`
-2. Enter the folder: `cd end2end/`
-3. Install Ruby gems: `bundle install`
-4. Start Jekyll server: `bundle exec jekyll serve`
+Portfolio projects are in '/_posts'
 
-Access, [localhost:4000/end2end](http://localhost:4000/end2end)
+Images are in '/img/portfolio'
 
-### Deploy in Github pages in 2 steps
+###About
 
-1. Change the variables `GITHUB_REPONAME` and `GITHUB_REPO_BRANCH` in `Rakefile`
-2. Run `rake` or `rake publish` for build and publish on Github
+Images are in '/img/about/'
 
----
+###Team
 
-### Using Rake tasks
+Team members and info are in '_config.yml'
 
-* Create a new page: `rake page name="contact.md"`
-* Create a new post: `rake post title="TITLE OF THE POST"`
+Images are in '/img/team/'
 
----
 
-### Demo and Download
+# Demo
 
-[Demo](http://nandomoreira.me/end2end/)
-[Download](https://github.com/nandomoreirame/end2end/archive/master.zip)
+View this jekyll theme in action [here](https://y7kim.github.io/agency-jekyll-theme)
 
-![end2end - free Jekyll theme](/screenshot.png)
-
----
-
-### Copyright and license
-
-It is under [the MIT license](/LICENSE).
-
-> :warning:
-  Please remove metas `<meta name="robots" content="noindex">` and `<meta name="googlebot" content="noindex">` in `source/_layouts/default.html`
-
-Enjoy :yum:
+=========
+For more details, read [documentation](http://jekyllrb.com/)
