@@ -11,10 +11,10 @@ locale:             en_US
 url:
 
 # Jekyll
-permalink:          /_posts/:year-:month-:day-:title
+permalink:          /_posts/:title
 markdown:           kramdown
 highlighter:        rouge
-kramdown: 
+kramdown:
   auto_ids:         true
   footnote_nr:      1
   entity_output:    as_char
