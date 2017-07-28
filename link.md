@@ -1,5 +1,5 @@
 ---
-layout: post-list
+layout: project
 title: link
 excerpt: "A List of Posts"
 ---
