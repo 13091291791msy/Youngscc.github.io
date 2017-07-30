@@ -1,7 +1,7 @@
 ---
 layout: page
 title: 小队友
-excerpt: "A List of Posts"
+excerpt: "Friends"
 ---
 
 ## 日常队友
