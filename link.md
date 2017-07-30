@@ -1,6 +1,6 @@
 ---
-layout: project
-title: link
+layout: home
+title: 小队友
 excerpt: "A List of Posts"
 ---
 
@@ -8,4 +8,4 @@ excerpt: "A List of Posts"
 
 [sssSSSay](https://ssssssay.github.io/):打饭贼快的长颈鹿。
 
-[Dedsecr](https://dedsecr.github.io/):只爱吃花生的业界大佬
+[Dedsecr](https://dedsecr.github.io/):只爱吃花生的业界大佬。
