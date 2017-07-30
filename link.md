@@ -1,5 +1,5 @@
 ---
-layout: home
+layout: page
 title: 小队友
 excerpt: "A List of Posts"
 ---
