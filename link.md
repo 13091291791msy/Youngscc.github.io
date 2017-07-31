@@ -13,3 +13,5 @@ excerpt: "Friends"
 [君见-いにっ](https://www.51nod.com/blog/blog.html#!blogId=173):二次元黑妹子。
 
 [soler](https://olers.github.io/):被抢注ID很不爽的EZ班花学姐。
+
+[MSY](https://13091291791msy.github.io/):机房大佬。
