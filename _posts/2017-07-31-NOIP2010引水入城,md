@@ -5,7 +5,7 @@ excerpt: "2nd"
 comments: true
 ---
 
-#NOIP2010-引水入城
+# NOIP2010-引水入城
 
 ## 题目描述
 
@@ -86,82 +86,82 @@ comments: true
 
 ## 题目分析
 
-    一上来读题让人很摸不着头脑，毕竟蓄水厂输水站什么的长的忒像，而且即使读懂题后，这个模型也不是太好建，可以意识到是个动态规划，但是怎么定义状态，以及转移方程也不是十分直观，我并没有用DP，而是在后边用了个贪心，其实差不多吧。
-    首先考虑无解的情况，如果无解的话，那么一定在最下边存在一个无论在那里建水厂都无法使它得到水的点。那就好办了，我们可以对于在每一个点建水库的情况进行搜索，最好使用BFS，否则会有爆栈的危险。全部搜索完后，如果存在没有被遍历到的最后一行的点，那么就是无解的情况，统计一下输出就好。如果有解，那么我们就要考虑如何安排水厂是最少的。首先我们想，在第一行的某一个点建水厂，对最后一行的影响一定是一个连续的区间，因为如果存在中间分叉而导致区间不连续的情况，那么中间断掉的那些点就相当于被周围的比他低的点隔离，也就不存在其他的点可以更新它，就是无解的情况了。我们可以借助刚才的BFS，统计出在每一个点建造水厂可以影响到的最左边和最右边的点，既然影响是连续的，那么l，r之间一定是一整个区间。这样问题就转化成了区间覆盖问题，用最少的区间来覆盖整个线段。
+一上来读题让人很摸不着头脑，毕竟蓄水厂输水站什么的长的忒像，而且即使读懂题后，这个模型也不是太好建，可以意识到是个动态规划，但是怎么定义状态，以及转移方程也不是十分直观，我并没有用DP，而是在后边用了个贪心，其实差不多吧。
+首先考虑无解的情况，如果无解的话，那么一定在最下边存在一个无论在那里建水厂都无法使它得到水的点。那就好办了，我们可以对于在每一个点建水库的情况进行搜索，最好使用BFS，否则会有爆栈的危险。全部搜索完后，如果存在没有被遍历到的最后一行的点，那么就是无解的情况，统计一下输出就好。如果有解，那么我们就要考虑如何安排水厂是最少的。首先我们想，在第一行的某一个点建水厂，对最后一行的影响一定是一个连续的区间，因为如果存在中间分叉而导致区间不连续的情况，那么中间断掉的那些点就相当于被周围的比他低的点隔离，也就不存在其他的点可以更新它，就是无解的情况了。我们可以借助刚才的BFS，统计出在每一个点建造水厂可以影响到的最左边和最右边的点，既然影响是连续的，那么l，r之间一定是一整个区间。这样问题就转化成了区间覆盖问题，用最少的区间来覆盖整个线段。
 
-    然后当你高高兴兴的去交代码的时候，发现你T了一组，怎么回事。
+然后当你高高兴兴的去交代码的时候，发现你T了一组，怎么回事。
+这就说明你的代码出现了冗余的情况，这个看似没毛病的代码怎么会冗余呢？
 
-    这就说明你的代码出现了冗余的情况，这个看似没毛病的代码怎么会冗余呢？
+你再仔细看一下又会发现，当一个点的两边存在一个比他高的点时，这个点就已经被遍历过了，也就是说他的影响区间被包含在了他旁边那个比他高的点的影响区间之内。这是在搜一遍他是没有任何必要的，加上这个重要的剪枝，你的代码就AC了！
 
-    你再仔细看一下又会发现，当一个点的两边存在一个比他高的点时，这个点就已经被遍历过了，也就是说他的影响区间被包含在了他旁边那个比他高的点的影响区间之内。这是在搜一遍他是没有任何必要的，加上这个重要的剪枝，你的代码就AC了！
-
-    恩就是这样，让我们上代码。
+恩就是这样，让我们上代码。
 
 ## 代码如下
 
 ```cpp
-    # include <algorithm>
-    # include <iostream>
-    # include <cstring>
-    # include <cstdio>
-    # include <queue>
-    # define R register
-    # define LL long long
 
-    using namespace std;
+# include <algorithm>
+# include <iostream>
+# include <cstring>
+# include <cstdio>
+# include <queue>
+# define R register
+# define LL long long
 
-    int n,m,h[510][510],tot,ans,q[250100][2];
-    int v[510][510];
+using namespace std;
 
+int n,m,h[510][510],tot,ans,q[250100][2];
+
+int v[510][510];
     struct pp{
-        int l,r;
-        pp(){l = 2147483647,r = 0;}//构造函数付初值
-    }tt[510];
+    int l,r;
+    pp(){l = 2147483647,r = 0;}//构造函数付初值
+}tt[510];
 
-    inline void in(R int &a){
-        R char c = getchar();R int x = 0,f = 1;
-        while(!isdigit(c)) {if(c == '-') f = -1; c = getchar();}
-        while(isdigit(c)) x = (x<<1)+(x<<3)+c-'0',c = getchar();
-        a = x*f;
+inline void in(R int &a){
+    R char c = getchar();R int x = 0,f = 1;
+    while(!isdigit(c)) {if(c == '-') f = -1; c = getchar();}
+    while(isdigit(c)) x = (x<<1)+(x<<3)+c-'0',c = getchar();
+    a = x*f;
+}
+
+inline bool cmp(pp a,pp b){return a.l < b.l;}
+
+inline int bfs(R int t){
+    R int head = 0,tail = 0;
+    q[++tail][0] = 1,q[tail][1] = t;
+	v[1][t] = t;//直接将标记记为源头的横坐标，避免每次memset。
+    while(head < tail){
+        R int x = q[++head][0],y = q[head][1];
+        if(x==n) tt[t].l = min(tt[t].l,y),tt[t].r = max(tt[t].r,y);
+        if(x+1<=n&&v[x+1][y]!=t&&h[x+1][y]<h[x][y]) v[x+1][y] = t,q[++tail][0] = x+1,q[tail][1] = y;//一定要在里打标记，不然会死的很惨。
+        if(x-1>=1&&v[x-1][y]!=t&&h[x-1][y]<h[x][y]) v[x-1][y] = t,q[++tail][0] = x-1,q[tail][1] = y;
+        if(y+1<=m&&v[x][y+1]!=t&&h[x][y+1]<h[x][y]) v[x][y+1] = t,q[++tail][0] = x,q[tail][1] = y+1;
+        if(y-1>=1&&v[x][y-1]!=t&&h[x][y-1]<h[x][y]) v[x][y-1] = t,q[++tail][0] = x,q[tail][1] = y-1;
     }
+}
 
-    inline bool cmp(pp a,pp b){return a.l < b.l;}
-
-    inline int bfs(R int t){
-        R int head = 0,tail = 0;
-        q[++tail][0] = 1,q[tail][1] = t;
-    	v[1][t] = t;//直接将标记记为源头的横坐标，避免每次memset。
-        while(head < tail){
-            R int x = q[++head][0],y = q[head][1];
-            if(x==n) tt[t].l = min(tt[t].l,y),tt[t].r = max(tt[t].r,y);
-            if(x+1<=n&&v[x+1][y]!=t&&h[x+1][y]<h[x][y]) v[x+1][y] = t,q[++tail][0] = x+1,q[tail][1] = y;//一定要在这里打标记，不然会死的很惨。
-            if(x-1>=1&&v[x-1][y]!=t&&h[x-1][y]<h[x][y]) v[x-1][y] = t,q[++tail][0] = x-1,q[tail][1] = y;
-            if(y+1<=m&&v[x][y+1]!=t&&h[x][y+1]<h[x][y]) v[x][y+1] = t,q[++tail][0] = x,q[tail][1] = y+1;
-            if(y-1>=1&&v[x][y-1]!=t&&h[x][y-1]<h[x][y]) v[x][y-1] = t,q[++tail][0] = x,q[tail][1] = y-1;
-        }
+int yg(){
+    in(n),in(m);
+    for(R int i=1; i<=n; ++i)
+        for(R int j=1; j<=m; ++j)
+            in(h[i][j]);
+    for(R int i=1; i<=m; ++i) if(h[1][i-1] <= h[1][i]&&h[1][i+1] <= h[1][i])  bfs(i);//重要的剪枝
+    for(R int i=1; i<=m; ++i) if(!v[n][i]) tot++;
+    if(tot) {printf("0\n%d",tot); exit(0);}//误解直接输出答案退出。
+    sort(tt+1,tt+m+1,cmp);
+    R int s = 0;
+    for(R int i=1; i<=m; ++i){ //贪心找最少的区间
+        if(tt[i].r<=s) continue;
+        R int st = i,to = 0;
+        while(tt[st].l <= s+1) to = max(to,tt[st++].r);//寻找有区间最远的区间最优
+        s = to,ans++;
+        if(s==m) break;
+        i = st-1;
     }
+    printf("1\n%d",ans);
+}
 
-    int yg(){
-        in(n),in(m);
-        for(R int i=1; i<=n; ++i)
-            for(R int j=1; j<=m; ++j)
-                in(h[i][j]);
-        for(R int i=1; i<=m; ++i) if(h[1][i-1] <= h[1][i]&&h[1][i+1] <= h[1][i])  bfs(i);//重要的剪枝
-        for(R int i=1; i<=m; ++i) if(!v[n][i]) tot++;
-        if(tot) {printf("0\n%d",tot); exit(0);}//误解直接输出答案退出。
-        sort(tt+1,tt+m+1,cmp);
-        R int s = 0;
-        for(R int i=1; i<=m; ++i){ //贪心找最少的区间
-            if(tt[i].r<=s) continue;
-            R int st = i,to = 0;
-            while(tt[st].l <= s+1) to = max(to,tt[st++].r);//寻找有区间最远的区间最优
-            s = to,ans++;
-            if(s==m) break;
-            i = st-1;
-        }
-        printf("1\n%d",ans);
-    }
-
-    int youngsc = yg();
-    int main(){;}
+int youngsc = yg();
+int main(){;}
 ```
