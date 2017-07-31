@@ -4,7 +4,7 @@ title: 小队友
 excerpt: "Friends"
 ---
 
-## 日常队友
+# 日常队友
 
 [sssSSSay](https://ssssssay.github.io/):打饭贼快的长颈鹿。
 
