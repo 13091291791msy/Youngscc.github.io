@@ -15,3 +15,5 @@ excerpt: "Friends"
 [soler](https://olers.github.io/):被抢注ID很不爽的EZ班花学姐。
 
 [MSY](https://13091291791msy.github.io/):机房大佬。
+
+[pretend_fal](http://blog.csdn.net/pretend_fal):呆萌小沛沛。
