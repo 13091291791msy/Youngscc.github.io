@@ -16,4 +16,4 @@ excerpt: "Friends"
 
 [MSY](https://13091291791msy.github.io/):机房大佬。
 
-[pretend_fal](http://blog.csdn.net/pretend_fal):呆萌小沛沛。
+[pretend_fal](http://blog.csdn.net/pretend_fal):被壁虎吓到二级神经衰弱的封号大佬。
