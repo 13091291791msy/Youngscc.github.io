@@ -10,7 +10,7 @@ excerpt: "Friends"
 
 [Dedsecr](https://dedsecr.github.io/):只爱吃花生的业界大佬。
 
-[君见-いにっ](https://www.51nod.com/blog/blog.html#!blogId=173):二次元黑妹子。
+[MloVtry]( https://mlovtry.github.io/):二次元黑妹子。
 
 [soler](https://olers.github.io/):被抢注ID很不爽的EZ班花学姐。
 
